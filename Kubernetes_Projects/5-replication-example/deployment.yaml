@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-dep
+  template:
+    metadata:
+      labels:
+        app: hello-dep
+    spec:
+      containers:
+      - name: hello-dep
+        image: cilium/echoserver:1.10.3
+        ports:
+        - containerPort: 8080
